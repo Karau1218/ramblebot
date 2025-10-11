@@ -43,12 +43,12 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
         tokens.add(word);
       }
       
-    }
+
     return tokens;
 }
-
+}
 
     
-  }
-}
+  
+
 
