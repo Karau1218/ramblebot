@@ -25,8 +25,7 @@ class LowercaseSentenceTokenizerTest {
        LowercaseSentenceTokenizer tokenizer = new LowercaseSentenceTokenizer();
        Scanner scanner = new Scanner ("hello     hi hi hi    hello hello");
        List<String> tokens = tokenizer.tokenize(scanner);
-       List<String> expected = List.of("hello", "hi" , "hi", "hi", "hello hello");
-        assertEquals(expected, tokens); //to confirm what we expect from the tokens
+       List<String> expected = List.of("hello", "hi" , "hi", "hi", "hello", "hello");        assertEquals(expected, tokens); //to confirm what we expect from the tokens
     }
 
 
@@ -52,7 +51,9 @@ class LowercaseSentenceTokenizerTest {
         Scanner scanner = new Scanner("Hello world. This is an example.");
         List<String> tokens = tokenizer.tokenize(scanner);
 
-        assertEquals(List.of("hello", "world", ".", "this", "is", "an", "example", "."), tokens);
+        //just finished this. and yo. this was hard. I changed the ', ' into '.'. I was just gettting errors 
+        // and then i saw the (,) were the errors --> it didnt match the scanner input
+        assertEquals(List.of("hello", "world", ".",  "this", "is", "an", "example", "."), tokens);
     }
 
     // Wave 3

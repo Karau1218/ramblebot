@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * A tokenizer that converts text input to lowercase and splits it 
@@ -29,18 +31,27 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
    * @param scanner the Scanner to read the input text from
    * @return a list of tokens, where each token is a word or a period
    */
+
+   @Override
   public List<String> tokenize(Scanner scanner) {
     // TODO: Implement this function to convert the scanner's input to a list of words and periods
-      
+
     // for token list
       List<String> tokens = new ArrayList<>();
-    // to read the text from scanner
+            // the regex matcher is for matching words, \\. _> means period(.),  is for more letters, periods or apostrophes .
+            Pattern tokenizedPattern = Pattern.compile("([a-z0-9']+\\.[a-z0-9']+|[a-z0-9']+|\\.)");
+
+    // to read the text from scanner; also make it lowercase
       while (scanner.hasNextLine()) {
-        String word = scanner.next();
-    // to make it lowercase
-        word = word.toLowerCase();
-    // to add it to the list
-        tokens.add(word);
+        String word = scanner.next().toLowerCase();
+          Matcher matcher = tokenizedPattern.matcher(word);
+
+
+        while (matcher.find()) {
+          tokens.add(matcher.group());
+        }
+    
+
       }
       
 
