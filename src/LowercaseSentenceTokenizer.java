@@ -38,7 +38,7 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
 
     // for token list
       List<String> tokens = new ArrayList<>();
-            // the regex matcher is for matching words, \\. _> means period(.),  is for more letters, periods or apostrophes .
+            // the regex pattern is for matching words or letters, \\. -> means period(.);  [a-z] for letters and 0-9 for numbers .
             Pattern tokenizedPattern = Pattern.compile("([a-z0-9']+\\.[a-z0-9']+|[a-z0-9']+|\\.)");
 
     // to read the text from scanner; also make it lowercase

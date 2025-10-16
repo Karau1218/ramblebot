@@ -24,6 +24,7 @@ class UnigramWordPredictorTest {
      * The expected neighbor map is checked to see if it matches this pattern.
      * The test does not care about the order of the map or the lists.
      */
+
     @Test
     void testTrainAndGetNeighborMap() {
         // Use a fake tokenizer with predefined tokens
@@ -33,7 +34,7 @@ class UnigramWordPredictorTest {
         UnigramWordPredictor predictor = new UnigramWordPredictor(fakeTokenizer);
         
         predictor.train(null); // The scanner input is ignored by FakeTokenizer
-        Map<String, List<String>> neighborMap = predictor.getNeighborMap();
+        Map<String, List<String>> neighborMap = predictor.neighborMap();
 
         // Sort the actual lists to ensure order does not affect comparison
         for (List<String> values : neighborMap.values()) {

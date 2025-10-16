@@ -51,7 +51,7 @@ class LowercaseSentenceTokenizerTest {
         Scanner scanner = new Scanner("Hello world. This is an example.");
         List<String> tokens = tokenizer.tokenize(scanner);
 
-        //just finished this. and yo. this was hard. I changed the ', ' into '.'. I was just gettting errors 
+        //just finished this. I changed the ', ' into '.'. I was just gettting errors 
         // and then i saw the (,) were the errors --> it didnt match the scanner input
         assertEquals(List.of("hello", "world", ".",  "this", "is", "an", "example", "."), tokens);
     }
