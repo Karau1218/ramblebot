@@ -52,7 +52,25 @@ public class UnigramWordPredictor implements WordPredictor {
     List<String> trainingWords = tokenizer.tokenize(scanner);
 
     // TODO: Convert the trainingWords into neighborMap here
-    Map<String, List<String>> neighborMap = new HashMap<>();
+    //Map<String, List<String>> 
+
+      // I removed the 'Map<String, List<String>>' because it makes it local instead of
+      // instance variable, just incase i use it with other methods 
+    neighborMap = new HashMap<>();
+
+      // Use for loop to loop through the word pairs
+      for (int i = 0; i < trainingWords.size() -1; i++) { // the -1 here does not let i go out of the 
+        // last word of the loop, otherwise there is an error; so the loop should stop on time for the last word
+        String currentWord = trainingWords.get(i); // this is for the current position 
+        String nextWord = trainingWords.get(i + 1);  // this is for the word immediately after it
+
+        // just incase the current word is not on the map, it adds it
+        neighborMap.putIfAbsent(currentWord, new ArrayList<>());
+
+        // the next word is added to the neighbors list 
+        neighborMap.get(currentWord).add(nextWord);
+      }
+
   }
 
   /**
@@ -102,6 +120,15 @@ public class UnigramWordPredictor implements WordPredictor {
   public String predictNextWord(List<String> context) {
     // TODO: Return a predicted word given the words preceding it
     // Hint: only the last word in context should be looked at
+
+
+
+    
+
+
+
+
+
     return null;
   }
   
@@ -113,6 +140,7 @@ public class UnigramWordPredictor implements WordPredictor {
    * 
    * @return a copy of the neighbor map
    */
+
   public Map<String, List<String>> getNeighborMap() {
     Map<String, List<String>> copy = new HashMap<>();
 
