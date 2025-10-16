@@ -61,7 +61,7 @@ public class UnigramWordPredictor implements WordPredictor {
 
       // Use for loop to loop through the word pairs
       for (int i = 0; i < trainingWords.size() -1; i++) { // the -1 here does not let i go out of the 
-        // last word of the loop, otherwise there is an error; so the loop should stop on time for the last word
+        // last word of the loop, otherwise there is an error; so with the -1 the loop should stop on time for the last word
         String currentWord = trainingWords.get(i); // this is for the current position 
         String nextWord = trainingWords.get(i + 1);  // this is for the word immediately after it
 
@@ -128,18 +128,18 @@ public class UnigramWordPredictor implements WordPredictor {
           return null;
         }
 
-        // this is for getting the last word of the context
+        // this is for getting the last word from the context
     String lastWord = context.get(context.size() -1);
 
-        // this is for gettin the last word from the list
+        // this is for looking at the list fron the neighborMap
     List<String> neighbors = neighborMap.get(lastWord);
 
-        // this is just incase no neighbors exist, so it returns null
+        // this is just incase no words are found, so it returns null
     if ( neighbors == null || neighbors.isEmpty()) {
       return null;
     }
 
-      // this is for picling the random next word
+      // this is for picking the random next word
     Random random = new Random();
     int num = random.nextInt(neighbors.size());
     return neighbors.get(num);

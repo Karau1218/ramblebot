@@ -36,17 +36,17 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
   public List<String> tokenize(Scanner scanner) {
     // TODO: Implement this function to convert the scanner's input to a list of words and periods
 
-    // for token list
+      // for the token list
       List<String> tokens = new ArrayList<>();
-            // the regex pattern is for matching words or letters, \\. -> means period(.);  [a-z] for letters and 0-9 for numbers .
+        // the regex pattern is for matching words or letters, \\. -> means period(.);  [a-z] for letters and 0-9 for numbers .
             Pattern tokenizedPattern = Pattern.compile("([a-z0-9']+\\.[a-z0-9']+|[a-z0-9']+|\\.)");
 
-    // to read the text from scanner; also make it lowercase
+        // to read the text from scanner; also make it lowercase
       while (scanner.hasNextLine()) {
         String word = scanner.next().toLowerCase();
-          Matcher matcher = tokenizedPattern.matcher(word);
+          Matcher matcher = tokenizedPattern.matcher(word); // this is for matching specific words
 
-
+        // iterate in the tokens to see if it would match the words I'm looking for 
         while (matcher.find()) {
           tokens.add(matcher.group());
         }
